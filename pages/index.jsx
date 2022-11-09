@@ -1,21 +1,22 @@
 import config from "../config.json";
 import styled from "styled-components";
-
+import { CSSReset } from "../src/components/CSSReset";
+import Menu from "../src/components/Menu";
+import { StyledTimeline } from "../src/components/Timeline";
 
 function HomePage() {
   return (
-    <div>
-      <Menu />
-      <Header />
-      <TimeLine playlists={config.playlist} />
-    </div>
+    <>
+      <CSSReset />
+      <div>
+        <Menu />
+        <Header />
+        <TimeLine playlists={config.playlists} />
+      </div>
+    </>
   );
 }
 export default HomePage;
-
-function Menu() {
-  return <div>Menu</div>;
-}
 
 const Styledheader = styled.div`
   img {
@@ -48,5 +49,27 @@ function Header() {
 }
 
 function TimeLine(props) {
-  return <div>Timeline</div>;
+  const playListNames = Object.keys(props.playlists);
+  return (
+    <StyledTimeline>
+      {playListNames.map((playlistname) => {
+        const video = props.playlists[playlistname];
+        return (
+          <section>
+            <h2>{playlistname}</h2>
+            <div>
+              {video.map((video) => {
+                return (
+                  <a href={video.url}>
+                    <img src={video.thumb} />
+                    <span>{video.title}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </StyledTimeline>
+  );
 }
