@@ -1,5 +1,21 @@
 {
     "name": "Patrick Alexander ",
     "job": "softwer dev ",
-    "github": "vanderpatrick"
+    "github": "vanderpatrick",
+    "playlist": {
+        "games": [
+            {
+                "title": "some title",
+                "url": "url",
+                "thumb": "video thumbnail"
+            }
+        ],
+        "frontend": [
+            {
+                "title": "some title",
+                "url": "url",
+                "thumb": "video thumbnail"
+            }
+        ]
+    }
 }

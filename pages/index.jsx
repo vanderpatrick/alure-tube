@@ -1,39 +1,52 @@
-import config from "../config.json"
+import config from "../config.json";
+import styled from "styled-components";
+
 
 function HomePage() {
   return (
     <div>
-        <Menu />
-        <Header />
-        <TimeLine />
+      <Menu />
+      <Header />
+      <TimeLine playlists={config.playlist} />
     </div>
-  ) 
+  );
 }
 export default HomePage;
 
 function Menu() {
-    return (
-        <div>Menu</div>
-    )
+  return <div>Menu</div>;
 }
 
+const Styledheader = styled.div`
+  img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 32px;
+    gap: 16px;
+  }
+`;
 
-function Header(){
-    return (
+function Header() {
+  return (
+    <Styledheader>
+      {/* <img src="banner" /> */}
+      <section className="user-info">
+        <img src={`https://github.com/${config.github}.png`} />
         <div>
-            <img src="banner" />
-            <img src={`https://github.com/${config.github}.png`} />
-            {config.name}
-            {config.job}
-            {config.github}
+          <h2>{config.name}</h2>
+          <p>{config.job}</p>
         </div>
-    )
+      </section>
+    </Styledheader>
+  );
 }
 
-function TimeLine(){
-    return (
-        <div>
-            Timeline
-        </div>
-    )
+function TimeLine(props) {
+  return <div>Timeline</div>;
 }
